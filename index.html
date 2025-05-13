@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>INDO-GERMAN MSME Conclave 2025 - Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #eaf0f6, #f9f9f9);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .form-section {
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-top: 30px;
+    }
+    .required::after {
+      content: "*";
+      color: red;
+      margin-left: 4px;
+    }
+    .header-section {
+      background: linear-gradient(90deg, #003366, #0055a5);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 0 0 16px 16px;
+      text-align: center;
+    }
+    .header-section h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+    .header-section p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #0055a5;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #003f7f;
+    }
+    #successMessage {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      background: #d4edda;
+      color: #155724;
+      border-radius: 16px;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+    #bankDetails, #gpayQR {
+      display: none;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      background-color: #f8f9fa;
+    }
+    #gpayQR img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-section">
+  <h1>INDO-GERMAN MSME CONCLAVE 2025</h1>
+  <p><strong>Thursday, 22nd May 2025 at 9:30 a.m., at Hyatt Regency, Teynampet, Chennai</strong></p>
+  <p>Connect with 150+ Indian & German MSMEs | Discover global best practices | Drive innovation</p>
+</div>
+
+<div class="container">
+  <div class="form-section mt-4" id="formSection">
+    <h4 class="mb-4 text-center fw-bold text-primary">Registration Form</h4>
+    <form id="registrationForm">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label required">Full Name</label>
+          <input type="text" class="form-control" id="name" required minlength="3">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label required">Designation</label>
+          <input type="text" class="form-control" id="designation" required minlength="2">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Company Name</label>
+        <input type="text" class="form-control" id="companyName" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Company Profile</label>
+        <textarea class="form-control" id="companyProfile" required minlength="10"></textarea>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label required">Email ID</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label required">Contact Number</label>
+          <input type="tel" class="form-control" id="contact" pattern="[0-9]{10}" required>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label required">No. of Participants</label>
+          <input type="number" class="form-control" id="participants" required min="1">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Participation Cost</label>
+          <input type="text" class="form-control" value="Rs.1500 (all inclusive)/participant" readonly>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="mb-3">
+        <label class="form-label required">Payment Method</label>
+        <select class="form-control" id="paymentMethod" required onchange="togglePaymentDetails()">
+          <option value="">-- Select Payment Method --</option>
+          <option value="neft">NEFT / Cheque</option>
+          <option value="gpay">Google Pay (GPay)</option>
+        </select>
+      </div>
+
+      <!-- Bank Details -->
+      <div id="bankDetails">
+        <p><strong>NEFT/Cheque - Bank Details:</strong></p>
+        <p><strong>Name:</strong> The Southern India Chamber of Commerce and Industry</p>
+        <p><strong>Bank:</strong> Indian Bank</p>
+        <p><strong>Branch:</strong> Esplanade Branch</p>
+        <p><strong>Current Account No:</strong> 484118091</p>
+        <p><strong>IFSC:</strong> IDIB000E011</p>
+      </div>
+
+      <!-- GPay QR -->
+      <div id="gpayQR">
+        <p class="fw-bold text-center">Scan this QR Code to pay via GPay</p>
+        <img src="qrcode.jpg" alt="GPay QR Code">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Transaction Details</label>
+        <input type="text" class="form-control" id="transaction" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Transaction Screenshot</label>
+        <input type="file" class="form-control" id="screenshot" accept="image/*" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Billing Name</label>
+        <input type="text" class="form-control" id="billingName" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">Billing Address with Pincode</label>
+        <textarea class="form-control" id="billingAddress" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label required">GST Number</label>
+        <input type="text" class="form-control" id="gstNo" required>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-5 mt-3">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="successMessage">
+    ✅ Registration Complete! Thank you for registering for the INDO-GERMAN MSME CONCLAVE 2025.
+  </div>
+</div>
+
+<script>
+  function togglePaymentDetails() {
+    const method = document.getElementById("paymentMethod").value;
+    document.getElementById("bankDetails").style.display = method === "neft" ? "block" : "none";
+    document.getElementById("gpayQR").style.display = method === "gpay" ? "block" : "none";
+  }
+</script>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCNu6QH3zpyE5zlCvUcSU3cxFEhEdb4XWM",
+    authDomain: "saranyamamproject.firebaseapp.com",
+    projectId: "saranyamamproject",
+    storageBucket: "saranyamamproject.appspot.com",
+    messagingSenderId: "975717192831",
+    appId: "1:975717192831:web:980cc164b91e74d75e9b4a"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  document.getElementById("registrationForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const data = {
+        name: document.getElementById("name").value,
+        designation: document.getElementById("designation").value,
+        companyName: document.getElementById("companyName").value,
+        companyProfile: document.getElementById("companyProfile").value,
+        email: document.getElementById("email").value,
+        contact: document.getElementById("contact").value,
+        participants: document.getElementById("participants").value,
+        paymentMethod: document.getElementById("paymentMethod").value,
+        transaction: document.getElementById("transaction").value,
+        billingName: document.getElementById("billingName").value,
+        billingAddress: document.getElementById("billingAddress").value,
+        gstNo: document.getElementById("gstNo").value,
+        screenshot: document.getElementById("screenshot").value
+      };
+
+      await addDoc(collection(db, "registrations"), data);
+
+      document.getElementById("formSection").style.display = "none";
+      document.getElementById("successMessage").style.display = "block";
+    } catch (error) {
+      console.error("Firebase Error:", error);
+      alert("❌ Firebase error: " + error.message);
+    }
+  });
+</script>
+</body>
+</html>
